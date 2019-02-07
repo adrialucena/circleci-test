@@ -8,8 +8,8 @@ jobs:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: tests
+          command: npm run test
 
       - run:
           name: Print the Current Time
