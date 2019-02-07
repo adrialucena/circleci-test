@@ -1,4 +1,8 @@
 version: 2
+
+orbs:
+    hello: circleci/hello-build@volatile
+    
 jobs:
   build:
     docker:
@@ -13,6 +17,8 @@ jobs:
       - run:
           name: tests
           command: npm run test
+          
+      - hello/hello-build
 
   deploy-stage:
     docker:
