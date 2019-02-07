@@ -15,10 +15,12 @@ jobs:
           command: npm run test
 
   deploy-stage:
+    docker:
+      - image: node:8.9-alpine
     filters:
       branches:
         ignore:
-           - master
+          - master
     steps:
       - run:
           name: deploy
