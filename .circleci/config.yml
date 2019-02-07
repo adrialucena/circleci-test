@@ -14,6 +14,12 @@ jobs:
           name: tests
           command: npm run test
 
+  deploy-stage:
+    filters:
+      branches:
+        ignore:
+           - master
+    steps:
       - run:
-          name: Print the Current Time
-          command: date
+          name: deploy
+          command: echo "deploy PR"
