@@ -25,3 +25,14 @@ jobs:
       - run:
           name: deploy
           command: echo "deploy PR"
+  deploy-prod:
+    docker:
+      - image: node:8.9-alpine
+    filters:
+      branches:
+        only:
+          - master
+    steps:
+      - run:
+          name: deploy
+          command: echo "deploy master"
