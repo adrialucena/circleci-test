@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:8.9-alpine
+
+    steps:
+      - checkout
+
+      - run:
+          name: install
+          command: npm install
+      - run:
+          name: tests
+          command: npm run test
+
+  deploy-stage:
+    docker:
+      - image: node:8.9-alpine
+    filters:
+      branches:
+        ignore:
+          - master
+    steps:
+      - run:
+          name: deploy
+          command: echo "deploy PR"
+  deploy-prod:
+    docker:
+      - image: node:8.9-alpine
+    filters:
+      branches:
+        only:
+          - master
+    steps:
+      - run:
+          name: deploy
+          command: echo "deploy master"
